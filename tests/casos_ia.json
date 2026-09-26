@@ -1,0 +1,72 @@
+[
+  {
+    "nome": "falta de agua",
+    "relato": "O motor que puxa água parou e várias casas estão sem água desde ontem.",
+    "categoria_esperada": "agua",
+    "prioridades_aceitas": ["alta", "critica"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "medicamentos",
+    "relato": "O posto está sem remédio para pressão e os moradores precisam buscar em outra localidade.",
+    "categoria_esperada": "medicamentos",
+    "prioridades_aceitas": ["alta", "acompanhamento"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "risco grave",
+    "relato": "Há uma pessoa com sangramento grave e risco de morte, sem transporte disponível agora.",
+    "categoria_esperada": "saude",
+    "prioridades_aceitas": ["critica"],
+    "emergencia_esperada": true
+  },
+  {
+    "nome": "transporte escolar",
+    "relato": "O barco do transporte escolar está quebrado e os alunos estão faltando aula.",
+    "categoria_esperada": "transporte",
+    "prioridades_aceitas": ["alta", "acompanhamento", "estrutural"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "energia",
+    "relato": "O gerador da comunidade parou e estamos sem energia durante a noite.",
+    "categoria_esperada": "energia",
+    "prioridades_aceitas": ["alta", "acompanhamento"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "conectividade",
+    "relato": "A comunidade está há semanas sem sinal de internet e isso dificulta comunicação e estudo.",
+    "categoria_esperada": "conectividade",
+    "prioridades_aceitas": ["acompanhamento", "estrutural"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "seguranca",
+    "relato": "Moradores relatam furtos recorrentes de produção de açaí durante a madrugada.",
+    "categoria_esperada": "seguranca",
+    "prioridades_aceitas": ["alta", "acompanhamento"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "infraestrutura",
+    "relato": "A ponte de madeira está quebrada e dificulta a passagem entre duas partes da comunidade.",
+    "categoria_esperada": "infraestrutura",
+    "prioridades_aceitas": ["alta", "acompanhamento", "estrutural"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "educacao",
+    "relato": "A escola está sem professor de matemática há mais de um mês.",
+    "categoria_esperada": "educacao",
+    "prioridades_aceitas": ["acompanhamento", "estrutural"],
+    "emergencia_esperada": false
+  },
+  {
+    "nome": "alimentos",
+    "relato": "Algumas famílias relatam falta de alimentos e dificuldade para conseguir proteína nesta semana.",
+    "categoria_esperada": "alimentos",
+    "prioridades_aceitas": ["alta", "acompanhamento"],
+    "emergencia_esperada": false
+  }
+]

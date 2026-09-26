@@ -1,0 +1,16 @@
+const listaComunidades = document.getElementById("lista-comunidades");
+const paramsMapa = new URLSearchParams(location.search);
+const embedMapa = paramsMapa.get("embed") === "1";
+if (embedMapa) document.body.classList.add("map-embed");
+
+const mapa = typeof L !== "undefined" ? L.map("mapa").setView([-3.1190, -60.0217], 6) : null;
+if (mapa) L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; OpenStreetMap contributors" }).addTo(mapa);
+
+const CORES_ACESSO = { facil: "#22c55e", medio: "#eab308", dificil: "#ef4444", nao_classificado: "#64748b" };
+function rotuloAcesso(grau) { return ({facil:"Acesso mais fácil",medio:"Acesso intermediário",dificil:"Acesso difícil",nao_classificado:"Não classificado"})[grau] || "Não classificado"; }
+function rotuloOrigem(origem) { return ({fonte_publica:"Fonte pública",autorizacao_comunidade:"Autorização comunitária"})[origem] || "Visibilidade registrada"; }
+function criarIconeAcesso(grau) { const cor=CORES_ACESSO[grau]||CORES_ACESSO.nao_classificado; return L.divIcon({className:"",html:`<div style="width:22px;height:22px;background:${cor};border:4px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.35)"></div>`,iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-15]}); }
+function popupComunidade(c) { const local=c.municipio?`<p>${escaparHtml(c.municipio)}</p>`:""; const fonte=c.fonte_dado?`<small>${escaparHtml(rotuloOrigem(c.origem_visibilidade))}: ${escaparHtml(c.fonte_dado)}</small>`:`<small>${escaparHtml(rotuloOrigem(c.origem_visibilidade))}</small>`; return `<strong>${escaparHtml(c.nome)}</strong>${local}<p>${escaparHtml(rotuloAcesso(c.grau_acesso))}</p>${fonte}`; }
+function desenharComunidade(c) { if(!mapa)return; const cor=CORES_ACESSO[c.grau_acesso]||CORES_ACESSO.nao_classificado; if(c.area_geojson){try{L.geoJSON(c.area_geojson,{style:{color:cor,weight:2,fillColor:cor,fillOpacity:.22}}).addTo(mapa).bindPopup(popupComunidade(c));return;}catch(e){console.warn("GeoJSON inválido",c.id,e);}} if(c.latitude_referencia!==null&&c.longitude_referencia!==null){L.marker([c.latitude_referencia,c.longitude_referencia],{icon:criarIconeAcesso(c.grau_acesso)}).addTo(mapa).bindPopup(popupComunidade(c));} }
+async function carregarComunidades(){try{const dados=await apiFetch("/comunidades?apenas_publicas=true");listaComunidades.innerHTML="";if(!dados.comunidades.length){listaComunidades.innerHTML="<div class='estado-vazio'>Nenhuma comunidade com visibilidade pública registrada foi cadastrada ainda.</div>";return;}for(const c of dados.comunidades){const item=document.createElement("div");item.className="comunidade-card";const municipio=c.municipio?` • ${escaparHtml(c.municipio)}`:"";item.innerHTML=`<div class="comunidade-status"><span class="bolinha" style="background:${CORES_ACESSO[c.grau_acesso]||CORES_ACESSO.nao_classificado}"></span><strong>${escaparHtml(c.nome)}</strong></div><p>${escaparHtml(rotuloAcesso(c.grau_acesso))}${municipio}</p><small>${escaparHtml(rotuloOrigem(c.origem_visibilidade))}${c.fonte_dado?` • ${escaparHtml(c.fonte_dado)}`:""}</small>`;listaComunidades.appendChild(item);desenharComunidade(c);}}catch(e){listaComunidades.innerHTML=`<div class='estado-vazio'>${escaparHtml(e.message)}</div>`;}}
+carregarComunidades();

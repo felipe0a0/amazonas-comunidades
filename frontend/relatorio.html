@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#173f32">
+  <link rel="stylesheet" href="style.css?v=final1"><title>Fazer um relato</title>
+</head>
+<body class="report-body">
+<header class="topo community-topo"><a class="logo" href="index.html"><span class="logo-icon">🌿</span><div><h1>Amazonas Comunidades</h1><p>Fazer um relato</p></div></a><nav class="topo-nav"><a href="index.html">Início</a><a href="comunidade.html">Meu perfil</a></nav></header>
+<main class="report-main">
+  <section id="relato-shell" class="report-card voice-first-card">
+    <p class="pequeno">FAÇA UM RELATO</p>
+    <h2>Conte o que está acontecendo.</h2>
+    <p>Você não precisa preencher categoria, prioridade ou nome de órgão.</p>
+
+    <div class="voice-stage">
+      <button id="btn-gravar" class="mic-main" type="button" aria-label="Começar gravação">🎙️</button>
+      <strong id="mic-label">Toque para falar</strong>
+      <small>Fale com naturalidade.</small>
+      <button id="btn-parar" class="btn btn-danger" type="button" disabled hidden>Parar gravação</button>
+      <audio id="audio-preview" controls hidden></audio>
+      <p id="status-audio" class="status-text"></p>
+      <label class="privacy-choice"><input id="guardar-audio" type="checkbox"> Guardar o áudio original para conferência restrita por usuários credenciados.</label>
+    </div>
+
+    <button id="btn-escrever" class="text-link" type="button">Prefere escrever?</button>
+    <div id="text-area-wrap" hidden>
+      <label for="relato">Seu relato</label>
+      <textarea id="relato" rows="7" maxlength="6000" placeholder="Conte com suas próprias palavras..."></textarea>
+    </div>
+
+    <div id="confirmacao-audio" class="listen-back" hidden>
+      <strong>Confira do jeito que for mais fácil</strong>
+      <p>O sistema pode ler em voz alta o que entendeu.</p>
+      <div class="acoes-linha"><button id="btn-ouvir" class="btn" type="button">🔊 Ouvir o que entendemos</button><button id="btn-confirmar" class="btn btn-primary" type="button">✓ Está certo</button><button id="btn-refazer" class="btn" type="button">↻ Gravar novamente</button></div>
+      <p id="status-confirmacao" class="status-text"></p>
+    </div>
+
+    <button id="btn-continuar" class="btn btn-primary btn-wide" type="button">Continuar</button>
+  </section>
+
+  <section id="localidade-card" class="report-card" hidden>
+    <p class="pequeno">LOCALIDADE</p><h2>De onde vem este relato?</h2>
+    <div id="localidade-ia" class="ai-location-result"></div>
+    <label>Comunidade<select id="comunidade-select"><option value="">Selecione se souber</option></select></label>
+    <div class="acoes-linha"><button id="btn-gps" class="btn" type="button">📍 Sugerir pelo GPS</button><button id="btn-falar-localidade" class="btn" type="button">🎙️ Falar minha localidade</button></div>
+    <p id="status-localidade" class="status-text"></p>
+    <label>Outra referência de localidade<input id="referencia-localidade" maxlength="500" placeholder="Rio, ramal, bairro, ponto de referência..."></label>
+    <details class="quick-community"><summary>Minha comunidade não está na lista</summary><div class="grid-2"><label>Nome da comunidade<input id="nova-comunidade-nome"></label><label>Município<input id="nova-comunidade-municipio"></label></div><button id="btn-cadastrar-comunidade" class="btn" type="button">Cadastrar como referência privada</button><p id="status-cadastro-comunidade" class="status-text"></p></details>
+    <label class="pending-choice"><input id="localidade-pendente" type="checkbox"> Não consigo informar agora. Enviar para revisão de localidade.</label>
+    <button id="btn-enviar" class="btn btn-primary btn-wide" type="button">Enviar relato</button>
+  </section>
+
+  <section id="sucesso" class="report-card success-card" hidden><div class="success-icon">✓</div><h2 id="sucesso-titulo">Relato recebido</h2><p id="sucesso-texto"></p><div class="acoes-linha"><a id="link-acompanhar" class="btn btn-primary" href="acompanhar.html">Acompanhar</a><a class="btn" href="index.html">Voltar ao início</a></div></section>
+</main>
+<script src="common.js"></script><script src="relatorio.js"></script>
+</body></html>

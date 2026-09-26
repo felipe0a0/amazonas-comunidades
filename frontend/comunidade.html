@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#173f32"><link rel="stylesheet" href="style.css?v=final1"><title>Área da comunidade</title></head>
+<body class="community-body">
+<header class="topo community-topo"><a class="logo" href="index.html"><span class="logo-icon">🌿</span><div><h1>Amazonas Comunidades</h1><p>Área da comunidade</p></div></a><nav class="topo-nav"><a href="index.html">Início</a><a href="mapa.html">Mapa público</a><button id="btn-sair-comunidade" hidden>Sair</button></nav></header>
+<main class="community-main">
+  <section id="community-access" class="community-access-shell">
+    <div class="community-access-copy"><p class="pequeno">SUA COMUNIDADE</p><h2>Acesse seu espaço comunitário.</h2><p>O que aparece aqui depende do seu perfil. Moradores acompanham os próprios relatos. Representantes podem acompanhar e se manifestar sobre demandas consolidadas da comunidade.</p></div>
+    <div class="access-grid">
+      <form id="form-cadastro-perfil" class="simple-card stack-form">
+        <h3>Criar cadastro</h3><label>Seu nome<input id="perfil-nome" required></label><label>Minha comunidade<select id="perfil-comunidade" required><option value="">Selecione</option></select></label><label>Eu sou<select id="perfil-papel"><option value="morador">Morador</option><option value="representante">Representante da comunidade</option></select></label><label>Função informada <span class="optional">opcional</span><input id="perfil-funcao" placeholder="Ex.: agente de saúde, liderança local"></label><button class="btn btn-primary" type="submit">Criar e entrar</button><p class="help">Protótipo: a identidade ainda é demonstrativa. Em produção, representantes precisam de verificação.</p>
+      </form>
+      <div class="simple-card stack-form"><h3>Já criou um perfil nesta demonstração?</h3><label>Perfil<select id="perfil-existente"><option value="">Selecione</option></select></label><button id="btn-login-perfil" class="btn" type="button">Entrar no perfil</button><p id="status-acesso" class="status-text"></p></div>
+    </div>
+  </section>
+
+  <section id="community-app" hidden>
+    <div class="community-dashboard-head"><div><p class="pequeno" id="perfil-tipo"></p><h2 id="perfil-saudacao"></h2><p id="perfil-contexto"></p></div><a class="community-big-action compact" href="relatorio.html"><span class="community-big-icon">🎙️</span><div><strong>Contar uma situação</strong><small>Fale ou escreva com suas próprias palavras</small></div><b>→</b></a></div>
+    <nav class="community-app-nav" id="community-app-nav"></nav>
+    <section id="community-panel" class="community-feed-shell"></section>
+    <section class="community-safe-note"><span>🛡️</span><div><strong>Visibilidade por perfil</strong><p>Moradores não recebem a lista de necessidades de outras pessoas. Representantes veem demandas consolidadas da própria comunidade, sem acesso automático ao áudio original de moradores.</p></div></section>
+  </section>
+</main>
+<script src="common.js"></script><script src="comunidade.js"></script></body></html>
