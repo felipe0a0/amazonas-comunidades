@@ -1,0 +1,6 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+akcit.db
+akcit_corrompido.db
